@@ -296,9 +296,12 @@ const VisionBoardCreator = () => {
         <div key={image.id} className="relative overflow-hidden rounded-lg shadow-sm">
           <img src={image.url} alt={image.alt} className="w-full h-full object-cover" />
           <button 
-            className="absolute top-2 right-2 p-1 rounded-full shadow-sm opacity-80 hover:opacity-100" 
-            style={{ background: gradients.accent }}
-            onClick={() => handleDeleteImage(image.id)}
+            className="absolute top-2 right-2 p-1 rounded-full shadow-sm opacity-80 hover:opacity-100 z-20 cursor-pointer" 
+            style={{ background: gradients.accent, position: 'relative' }}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDeleteImage(image.id);
+            }}
           >
             <Trash2 size={16} color="white" />
           </button>
@@ -316,22 +319,30 @@ const VisionBoardCreator = () => {
               color: text.color, 
               fontSize: `${text.fontSize}px`,
               backgroundColor: text.bgColor,
-              zIndex: 10
+              zIndex: 10,
+              position: 'absolute',
+              userSelect: 'none'
             }}
           >
             {text.text}
             <div className="flex gap-2 mt-2 opacity-80">
               <button 
-                className="p-1 rounded-full" 
-                style={{ background: gradients.blue }}
-                onClick={() => handleEditText(text.id)}
+                className="p-1 rounded-full z-20 cursor-pointer" 
+                style={{ background: gradients.blue, position: 'relative' }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEditText(text.id);
+                }}
               >
                 <Edit size={12} color="white" />
               </button>
               <button 
-                className="p-1 rounded-full" 
-                style={{ background: gradients.accent }}
-                onClick={() => handleDeleteText(text.id)}
+                className="p-1 rounded-full z-20 cursor-pointer" 
+                style={{ background: gradients.accent, position: 'relative' }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDeleteText(text.id);
+                }}
               >
                 <Trash2 size={12} color="white" />
               </button>
@@ -349,9 +360,12 @@ const VisionBoardCreator = () => {
         <div key={image.id} className="relative overflow-hidden rounded-lg shadow-sm">
           <img src={image.url} alt={image.alt} className="w-full h-full object-cover" />
           <button 
-            className="absolute top-2 right-2 p-1 rounded-full shadow-sm opacity-80 hover:opacity-100" 
-            style={{ background: gradients.accent }}
-            onClick={() => handleDeleteImage(image.id)}
+            className="absolute top-2 right-2 p-1 rounded-full shadow-sm opacity-80 hover:opacity-100 z-20 cursor-pointer" 
+            style={{ background: gradients.accent, position: 'relative' }}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDeleteImage(image.id);
+            }}
           >
             <Trash2 size={16} color="white" />
           </button>
@@ -369,22 +383,30 @@ const VisionBoardCreator = () => {
               color: text.color, 
               fontSize: `${text.fontSize}px`,
               backgroundColor: text.bgColor,
-              zIndex: 10
+              zIndex: 10,
+              position: 'absolute',
+              userSelect: 'none'
             }}
           >
             {text.text}
             <div className="flex gap-2 mt-2 opacity-80">
               <button 
-                className="p-1 rounded-full" 
-                style={{ background: gradients.blue }}
-                onClick={() => handleEditText(text.id)}
+                className="p-1 rounded-full z-20 cursor-pointer" 
+                style={{ background: gradients.blue, position: 'relative' }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEditText(text.id);
+                }}
               >
                 <Edit size={12} color="white" />
               </button>
               <button 
-                className="p-1 rounded-full" 
-                style={{ background: gradients.accent }}
-                onClick={() => handleDeleteText(text.id)}
+                className="p-1 rounded-full z-20 cursor-pointer" 
+                style={{ background: gradients.accent, position: 'relative' }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDeleteText(text.id);
+                }}
               >
                 <Trash2 size={12} color="white" />
               </button>
@@ -417,22 +439,30 @@ const VisionBoardCreator = () => {
                 color: text.color, 
                 fontSize: `${text.fontSize}px`,
                 backgroundColor: text.bgColor,
-                zIndex: 10
+                zIndex: 10,
+                position: 'absolute',
+                userSelect: 'none'
               }}
             >
               {text.text}
               <div className="flex gap-2 mt-2 opacity-80">
                 <button 
-                  className="p-1 rounded-full" 
-                  style={{ background: gradients.blue }}
-                  onClick={() => handleEditText(text.id)}
+                  className="p-1 rounded-full z-20 cursor-pointer" 
+                  style={{ background: gradients.blue, position: 'relative' }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleEditText(text.id);
+                  }}
                 >
                   <Edit size={12} color="white" />
                 </button>
                 <button 
-                  className="p-1 rounded-full" 
-                  style={{ background: gradients.accent }}
-                  onClick={() => handleDeleteText(text.id)}
+                  className="p-1 rounded-full z-20 cursor-pointer" 
+                  style={{ background: gradients.accent, position: 'relative' }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDeleteText(text.id);
+                  }}
                 >
                   <Trash2 size={12} color="white" />
                 </button>
@@ -455,10 +485,11 @@ const VisionBoardCreator = () => {
         <div className="text-center">
           <p style={{ color: morandiColors.darkAccent }}>请选择一个模板</p>
           <button 
-            className="mt-4 px-5 py-2 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+            className="mt-4 px-5 py-2 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md z-10 cursor-pointer"
             style={{ 
               background: gradients.button,
-              color: 'white'
+              color: 'white',
+              position: 'relative'
             }}
             onClick={() => setShowTemplateModal(true)}
           >
@@ -483,7 +514,7 @@ const VisionBoardCreator = () => {
 
   // 渲染主页
   const renderHomePage = () => (
-    <div className="flex flex-col min-h-screen" style={{ background: gradients.homeBg }}>
+    <div className="flex flex-col min-h-screen w-full" style={{ background: gradients.homeBg }}>
       {/* 头部 */}
       <header className="p-8 flex flex-col items-center justify-center">
         <h1 className="text-4xl font-light mb-6 text-center" style={{ color: morandiColors.text }}>
@@ -495,12 +526,13 @@ const VisionBoardCreator = () => {
       </header>
 
       {/* 选择卡片 */}
-      <main className="flex-1 container mx-auto px-6 flex flex-col items-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
+      <main className="flex-1 w-full px-4 flex flex-col items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full max-w-4xl">
           {/* 愿景板卡片 */}
           <div 
             className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
             onClick={() => handleSelectCreate('visionBoard')}
+            style={{ position: 'relative', zIndex: 5 }}
           >
             <div className="h-56 relative" style={{ background: gradients.visionCard }}>
               <div className="absolute inset-0 flex items-center justify-center opacity-90">
@@ -524,6 +556,7 @@ const VisionBoardCreator = () => {
           <div 
             className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
             onClick={() => handleSelectCreate('wallpaper')}
+            style={{ position: 'relative', zIndex: 5 }}
           >
             <div className="h-56 relative" style={{ background: gradients.wallpaperCard }}>
               <div className="absolute inset-0 flex items-center justify-center opacity-90">
@@ -553,6 +586,7 @@ const VisionBoardCreator = () => {
                 <div 
                   key={creation.id}
                   className="bg-white rounded-lg shadow overflow-hidden cursor-pointer"
+                  style={{ position: 'relative', zIndex: 5 }}
                   onClick={() => {
                     // 加载已保存的创作
                     setActiveTab(creation.type);
@@ -589,12 +623,13 @@ const VisionBoardCreator = () => {
 
   // 渲染编辑页面
   const renderEditorPage = () => (
-    <div className="flex flex-col min-h-screen" style={{ background: gradients.card }}>
+    <div className="flex flex-col min-h-screen w-full" style={{ background: gradients.card }}>
       {/* 编辑器头部 */}
       <header className="p-6" style={{ background: gradients.header }}>
-        <div className="container mx-auto flex items-center">
+        <div className="w-full max-w-7xl mx-auto flex items-center">
           <button 
-            className="mr-4 p-2 rounded-full transition-all duration-200 hover:bg-white hover:bg-opacity-20"
+            className="mr-4 p-2 rounded-full transition-all duration-200 hover:bg-white hover:bg-opacity-20 cursor-pointer"
+            style={{ position: 'relative', zIndex: 20 }}
             onClick={handleBackToHome}
           >
             <ArrowLeft size={20} color={morandiColors.text} />
@@ -606,28 +641,28 @@ const VisionBoardCreator = () => {
       </header>
 
       {/* 主要内容区 */}
-      <main className="flex-1 container mx-auto p-4">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-4">
         {/* 功能按钮区 */}
         <div className="flex flex-wrap gap-4 mb-6">
           <button 
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-amber-800 shadow-sm transition-all duration-200 hover:shadow-md"
-            style={{ background: gradients.button }}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-amber-800 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer"
+            style={{ background: gradients.button, position: 'relative', zIndex: 20 }}
             onClick={() => setShowTemplateModal(true)}
           >
             <Layout size={18} />
             选择模板
           </button>
           <button 
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-amber-800 shadow-sm transition-all duration-200 hover:shadow-md"
-            style={{ background: gradients.accent }}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-amber-800 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer"
+            style={{ background: gradients.accent, position: 'relative', zIndex: 20 }}
             onClick={() => setShowImageModal(true)}
           >
             <Image size={18} />
             添加图片
           </button>
           <button 
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-amber-800 shadow-sm transition-all duration-200 hover:shadow-md"
-            style={{ background: gradients.green }}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-amber-800 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer"
+            style={{ background: gradients.green, position: 'relative', zIndex: 20 }}
             onClick={() => setShowTextModal(true)}
           >
             <Type size={18} />
@@ -636,20 +671,24 @@ const VisionBoardCreator = () => {
           {activeTab === 'wallpaper' && (
             <div className="flex gap-3 ml-2">
               <button 
-                className="px-4 py-2 rounded-lg shadow-sm transition-all duration-200"
+                className="px-4 py-2 rounded-lg shadow-sm transition-all duration-200 cursor-pointer"
                 style={{ 
                   background: deviceType === 'desktop' ? gradients.green : morandiColors.mediumBg,
-                  color: deviceType === 'desktop' ? 'white' : morandiColors.text
+                  color: deviceType === 'desktop' ? 'white' : morandiColors.text,
+                  position: 'relative',
+                  zIndex: 20
                 }}
                 onClick={() => setDeviceType('desktop')}
               >
                 电脑壁纸
               </button>
               <button 
-                className="px-4 py-2 rounded-lg shadow-sm transition-all duration-200"
+                className="px-4 py-2 rounded-lg shadow-sm transition-all duration-200 cursor-pointer"
                 style={{ 
                   background: deviceType === 'mobile' ? gradients.accent : morandiColors.mediumBg,
-                  color: deviceType === 'mobile' ? 'white' : morandiColors.text
+                  color: deviceType === 'mobile' ? 'white' : morandiColors.text,
+                  position: 'relative',
+                  zIndex: 20
                 }}
                 onClick={() => setDeviceType('mobile')}
               >
@@ -673,16 +712,16 @@ const VisionBoardCreator = () => {
         {/* 下载和保存按钮 */}
         <div className="flex items-center justify-center gap-4 mb-8">
           <button 
-            className="flex items-center gap-2 px-6 py-3 rounded-lg shadow-sm text-white transition-all duration-200 hover:shadow-md"
-            style={{ background: gradients.button }}
+            className="flex items-center gap-2 px-6 py-3 rounded-lg shadow-sm text-white transition-all duration-200 hover:shadow-md cursor-pointer"
+            style={{ background: gradients.button, position: 'relative', zIndex: 20 }}
             onClick={handleDownload}
           >
             <Download size={18} />
             下载成品
           </button>
           <button 
-            className="flex items-center gap-2 px-6 py-3 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
-            style={{ background: morandiColors.sage, color: morandiColors.text }}
+            className="flex items-center gap-2 px-6 py-3 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer"
+            style={{ background: morandiColors.sage, color: morandiColors.text, position: 'relative', zIndex: 20 }}
             onClick={saveCreation}
           >
             <Plus size={18} />
@@ -697,22 +736,26 @@ const VisionBoardCreator = () => {
           {/* 素材选项卡 */}
           <div className="flex mb-6" style={{ borderBottom: `1px solid ${morandiColors.mediumBg}` }}>
             <button 
-              className={`py-2 px-5 rounded-t-lg font-medium ${activeStockTab === 'images' ? 'border-b-2' : ''}`}
+              className={`py-2 px-5 rounded-t-lg font-medium ${activeStockTab === 'images' ? 'border-b-2' : ''} cursor-pointer`}
               style={{ 
                 borderColor: morandiColors.accent,
                 color: activeStockTab === 'images' ? morandiColors.darkAccent : morandiColors.text,
-                backgroundColor: activeStockTab === 'images' ? morandiColors.mediumBg : 'transparent'
+                backgroundColor: activeStockTab === 'images' ? morandiColors.mediumBg : 'transparent',
+                position: 'relative',
+                zIndex: 20
               }}
               onClick={() => setActiveStockTab('images')}
             >
               图片素材
             </button>
             <button 
-              className={`py-2 px-5 font-medium ${activeStockTab === 'quotes' ? 'border-b-2' : ''}`}
+              className={`py-2 px-5 font-medium ${activeStockTab === 'quotes' ? 'border-b-2' : ''} cursor-pointer`}
               style={{ 
                 borderColor: morandiColors.accent,
                 color: activeStockTab === 'quotes' ? morandiColors.darkAccent : morandiColors.text,
-                backgroundColor: activeStockTab === 'quotes' ? morandiColors.mediumBg : 'transparent'
+                backgroundColor: activeStockTab === 'quotes' ? morandiColors.mediumBg : 'transparent',
+                position: 'relative',
+                zIndex: 20
               }}
               onClick={() => setActiveStockTab('quotes')}
             >
@@ -731,8 +774,8 @@ const VisionBoardCreator = () => {
                     {image.alt}
                   </div>
                   <button 
-                    className="w-full py-2 text-amber-800 transition-all duration-200 hover:opacity-90"
-                    style={{ background: gradients.accent }}
+                    className="w-full py-2 text-amber-800 transition-all duration-200 hover:opacity-90 cursor-pointer"
+                    style={{ background: gradients.accent, position: 'relative', zIndex: 20 }}
                     onClick={() => handleAddStockImage(image)}
                   >
                     添加
@@ -750,8 +793,8 @@ const VisionBoardCreator = () => {
                   style={{ background: gradients.primary }}>
                   <p className="mb-3 text-center" style={{ color: morandiColors.text }}>{quote.text}</p>
                   <button 
-                    className="w-full py-2 rounded-lg text-amber-800 transition-all duration-200 hover:opacity-90"
-                    style={{ background: gradients.accent }}
+                    className="w-full py-2 rounded-lg text-amber-800 transition-all duration-200 hover:opacity-90 cursor-pointer"
+                    style={{ background: gradients.accent, position: 'relative', zIndex: 20 }}
                     onClick={() => handleAddStockQuote(quote)}
                   >
                     添加
@@ -786,6 +829,8 @@ const VisionBoardCreator = () => {
                     borderStyle: 'solid',
                     borderColor: selectedTemplate?.id === template.id ? morandiColors.accent : morandiColors.mediumBg,
                     background: selectedTemplate?.id === template.id ? gradients.primary : 'white',
+                    position: 'relative',
+                    zIndex: 20
                   }}
                   onClick={() => setSelectedTemplate(template)}
                 >
@@ -886,20 +931,24 @@ const VisionBoardCreator = () => {
             
             <div className="flex justify-end mt-6">
               <button 
-                className="px-5 py-2 rounded-lg mr-3 transition-all duration-200 hover:opacity-90"
+                className="px-5 py-2 rounded-lg mr-3 transition-all duration-200 hover:opacity-90 cursor-pointer"
                 style={{ 
                   background: gradients.card,
-                  color: morandiColors.darkAccent
+                  color: morandiColors.darkAccent,
+                  position: 'relative',
+                  zIndex: 20
                 }}
                 onClick={() => setShowTemplateModal(false)}
               >
                 取消
               </button>
               <button 
-                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
+                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90 cursor-pointer"
                 style={{ 
                   background: gradients.button,
-                  color: 'white'
+                  color: 'white',
+                  position: 'relative',
+                  zIndex: 20
                 }}
                 onClick={() => setShowTemplateModal(false)}
               >
@@ -923,7 +972,7 @@ const VisionBoardCreator = () => {
                   type="file" 
                   accept="image/*" 
                   onChange={handleImageUpload}
-                  className="w-full"
+                  className="w-full cursor-pointer"
                 />
               </div>
             </div>
@@ -942,20 +991,24 @@ const VisionBoardCreator = () => {
 
             <div className="flex justify-end gap-3">
               <button 
-                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
+                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90 cursor-pointer"
                 style={{ 
                   background: gradients.card,
-                  color: morandiColors.darkAccent
+                  color: morandiColors.darkAccent,
+                  position: 'relative',
+                  zIndex: 20
                 }}
                 onClick={() => setShowImageModal(false)}
               >
                 取消
               </button>
               <button 
-                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
+                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90 cursor-pointer"
                 style={{ 
                   background: gradients.button,
-                  color: 'white'
+                  color: 'white',
+                  position: 'relative',
+                  zIndex: 20
                 }}
                 onClick={handleAddImageUrl}
               >
@@ -1005,7 +1058,7 @@ const VisionBoardCreator = () => {
                   type="color" 
                   value={currentText.color}
                   onChange={(e) => setCurrentText({...currentText, color: e.target.value})}
-                  className="w-full h-12 rounded-lg"
+                  className="w-full h-12 rounded-lg cursor-pointer"
                 />
               </div>
             </div>
@@ -1017,14 +1070,14 @@ const VisionBoardCreator = () => {
                   type="color" 
                   value={currentText.bgColor === 'transparent' ? '#ffffff' : currentText.bgColor}
                   onChange={(e) => setCurrentText({...currentText, bgColor: e.target.value})}
-                  className="w-12 h-12 rounded-lg"
+                  className="w-12 h-12 rounded-lg cursor-pointer"
                 />
-                <label className="flex items-center gap-2" style={{ color: morandiColors.text }}>
+                <label className="flex items-center gap-2 cursor-pointer" style={{ color: morandiColors.text }}>
                   <input 
                     type="checkbox" 
                     checked={currentText.bgColor === 'transparent'}
                     onChange={(e) => setCurrentText({...currentText, bgColor: e.target.checked ? 'transparent' : '#ffffff'})}
-                    className="w-4 h-4"
+                    className="w-4 h-4 cursor-pointer"
                   />
                   透明背景
                 </label>
@@ -1033,10 +1086,12 @@ const VisionBoardCreator = () => {
 
             <div className="flex justify-end gap-3">
               <button 
-                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
+                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90 cursor-pointer"
                 style={{ 
                   background: gradients.card,
-                  color: morandiColors.darkAccent
+                  color: morandiColors.darkAccent,
+                  position: 'relative',
+                  zIndex: 20
                 }}
                 onClick={() => {
                   setShowTextModal(false);
@@ -1047,10 +1102,12 @@ const VisionBoardCreator = () => {
                 取消
               </button>
               <button 
-                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
+                className="px-5 py-2 rounded-lg transition-all duration-200 hover:opacity-90 cursor-pointer"
                 style={{ 
                   background: gradients.button,
-                  color: 'white'
+                  color: 'white',
+                  position: 'relative',
+                  zIndex: 20
                 }}
                 onClick={handleAddText}
               >
